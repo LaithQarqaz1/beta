@@ -3,30 +3,25 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Elevated Guidance Collective</title>
+    <title>Mindset Coaching Academy</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      rel="preconnect"
-      href="https://fonts.googleapis.com"
-    />
-    <link
-      rel="preconnect"
-      href="https://fonts.gstatic.com"
-      crossorigin
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Playfair+Display:wght@600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <style>
       :root {
         color-scheme: light;
-        --black: #0f172a;
-        --text: #1f2937;
-        --muted: #6b7280;
-        --accent: #6c63ff;
-        --accent-2: #ff6584;
-        --soft: #f7f7fb;
-        --border: #e5e7eb;
+        --ink: #1d1a17;
+        --muted: #6b6258;
+        --rust: #c15b3a;
+        --rust-dark: #a1462c;
+        --sage: #264243;
+        --sand: #f5efe6;
+        --cream: #fffaf5;
+        --gold: #b88a52;
+        --border: rgba(29, 26, 23, 0.12);
       }
 
       *,
@@ -35,23 +30,36 @@
         box-sizing: border-box;
       }
 
+      html {
+        scroll-behavior: smooth;
+      }
+
       body {
         margin: 0;
-        font-family: "Manrope", "Segoe UI", sans-serif;
-        color: var(--text);
-        background: var(--soft);
+        font-family: "Plus Jakarta Sans", "Segoe UI", sans-serif;
+        color: var(--ink);
+        background: radial-gradient(circle at top, #fdf8f2 0%, #f3ebe1 38%, #efe4d8 100%);
         line-height: 1.7;
       }
 
+      img {
+        max-width: 100%;
+        display: block;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
       header {
-        min-height: 95vh;
+        min-height: 92vh;
         padding: clamp(24px, 4vw, 80px);
         color: #fff;
         background-image: url("imgs/IMG-20251108-WA0338.jpg");
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
-        background-color: var(--soft);
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -63,30 +71,17 @@
         content: "";
         position: absolute;
         inset: 0;
-        background: linear-gradient(
-          135deg,
-          rgba(15, 23, 42, 0.92),
-          rgba(15, 23, 42, 0.4)
-        );
+        background: linear-gradient(130deg, rgba(20, 20, 16, 0.9), rgba(20, 20, 16, 0.3));
         z-index: 0;
-        pointer-events: none;
       }
 
       header::after {
         content: "";
         position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        height: clamp(120px, 20vw, 220px);
-        background: linear-gradient(
-          180deg,
-          rgba(247, 247, 251, 0) 0%,
-          rgba(247, 247, 251, 0.85) 60%,
-          var(--soft) 100%
-        );
+        inset: auto 0 0 0;
+        height: clamp(120px, 20vw, 200px);
+        background: linear-gradient(180deg, rgba(245, 239, 230, 0) 0%, rgba(245, 239, 230, 0.9) 80%, #f5efe6 100%);
         z-index: 0;
-        pointer-events: none;
       }
 
       header > * {
@@ -99,13 +94,13 @@
         align-items: center;
         justify-content: space-between;
         flex-wrap: wrap;
-        gap: 24px;
+        gap: 20px;
       }
 
       .brand {
-        font-family: "Playfair Display", serif;
-        letter-spacing: 0.08em;
-        font-size: clamp(1.4rem, 3vw, 2rem);
+        font-family: "DM Serif Display", serif;
+        font-size: clamp(1.4rem, 3vw, 2.2rem);
+        letter-spacing: 0.04em;
       }
 
       nav ul {
@@ -131,29 +126,28 @@
       }
 
       .hero {
-        max-width: 640px;
+        max-width: 680px;
         margin-top: 48px;
       }
 
       .eyebrow {
         text-transform: uppercase;
-        letter-spacing: 0.4em;
+        letter-spacing: 0.35em;
         font-size: 0.75rem;
-        color: rgba(255, 255, 255, 0.8);
+        color: rgba(255, 255, 255, 0.85);
       }
 
       h1 {
-        font-size: clamp(1.8rem, 4.5vw, 3.2rem);
-        margin: 16px 0 24px;
-        line-height: 1.2;
-        font-family: "Playfair Display", serif;
+        font-size: clamp(2rem, 4.8vw, 3.4rem);
+        margin: 16px 0 20px;
+        line-height: 1.15;
+        font-family: "DM Serif Display", serif;
       }
 
       .hero p {
         font-size: 1.1rem;
         color: #fff;
-        margin-bottom: 32px;
-        line-height: 1.65;
+        margin-bottom: 28px;
       }
 
       .cta-group {
@@ -165,9 +159,9 @@
 
       .cta {
         border: none;
-        border-radius: 40px;
-        padding: 10px 24px;
-        font-size: 0.95rem;
+        border-radius: 999px;
+        padding: 12px 26px;
+        font-size: 0.98rem;
         font-weight: 600;
         cursor: pointer;
         transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
@@ -177,18 +171,16 @@
         text-align: center;
         min-height: 48px;
         letter-spacing: 0.01em;
-        width: auto;
-        max-width: 100%;
       }
 
       .cta.primary {
-        background: linear-gradient(120deg, var(--accent), var(--accent-2));
+        background: linear-gradient(120deg, var(--rust), #e38a62);
         color: #fff;
-        box-shadow: 0 15px 35px rgba(108, 99, 255, 0.35);
+        box-shadow: 0 18px 35px rgba(193, 91, 58, 0.35);
       }
 
       .cta.secondary {
-        background: rgba(255, 255, 255, 0.12);
+        background: rgba(255, 255, 255, 0.15);
         color: #fff;
         border: 1px solid rgba(255, 255, 255, 0.45);
       }
@@ -202,71 +194,297 @@
         outline-offset: 4px;
       }
 
+      .hero-trust {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        margin-top: 28px;
+      }
+
+      .hero-trust span {
+        background: rgba(255, 255, 255, 0.12);
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        padding: 8px 14px;
+        border-radius: 999px;
+        font-size: 0.85rem;
+      }
+
       main {
         display: flex;
         flex-direction: column;
-        gap: clamp(48px, 8vw, 110px);
+        gap: clamp(46px, 7vw, 100px);
       }
 
       main section {
         padding: clamp(36px, 6vw, 90px) clamp(18px, 6vw, 90px);
       }
 
-      .services {
-        margin-top: clamp(-70px, -10vw, -30px);
+      .soft-panel {
+        background: var(--cream);
+        border-radius: 36px;
+        box-shadow: 0 25px 60px rgba(29, 26, 23, 0.08);
+        border: 1px solid var(--border);
+      }
+
+      .section-header h2 {
+        margin: 0;
+        font-size: clamp(2rem, 4vw, 3rem);
+        font-family: "DM Serif Display", serif;
+      }
+
+      .section-header p {
+        color: var(--muted);
+        max-width: 680px;
+        margin-top: 12px;
+        font-size: 1.05rem;
       }
 
       .card-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: clamp(20px, 2.5vw, 32px);
-        margin-top: clamp(28px, 5vw, 48px);
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: clamp(18px, 3vw, 32px);
+        margin-top: clamp(24px, 4vw, 42px);
+      }
+
+      .service-card {
+        background: #fff;
+        border-radius: 28px;
+        overflow: hidden;
+        border: 1px solid var(--border);
+        box-shadow: 0 20px 40px rgba(29, 26, 23, 0.08);
+        display: flex;
+        flex-direction: column;
+      }
+
+      .service-card img {
         width: 100%;
+        height: 220px;
+        object-fit: cover;
       }
 
-      .mini-stats {
+      .service-card .content {
+        padding: 24px;
+      }
+
+      .label {
+        display: inline-flex;
+        padding: 6px 16px;
+        border-radius: 999px;
+        background: rgba(193, 91, 58, 0.12);
+        color: var(--rust-dark);
+        font-size: 0.8rem;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+      }
+
+      .service-card h3 {
+        margin: 14px 0 10px;
+        font-size: 1.25rem;
+      }
+
+      .service-card p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      .book-section {
+        display: block;
+      }
+
+      .book-card {
+        background: linear-gradient(150deg, #fbf2e7, #f0e0cd);
+        border-radius: 36px;
+        padding: clamp(24px, 5vw, 42px);
+        border: 1px solid rgba(184, 138, 82, 0.35);
+        position: relative;
+        overflow: hidden;
+        box-shadow: 0 25px 50px rgba(29, 26, 23, 0.12);
+      }
+
+      .book-card::before {
+        content: "";
+        position: absolute;
+        width: 320px;
+        height: 320px;
+        right: -120px;
+        top: 20px;
+        background: radial-gradient(circle, rgba(193, 91, 58, 0.18), rgba(193, 91, 58, 0));
+        border-radius: 50%;
+        z-index: 0;
+      }
+
+      .book-card::after {
+        content: "";
+        position: absolute;
+        inset: 18px;
+        border: 1px solid rgba(184, 138, 82, 0.3);
+        border-radius: 24px;
+        pointer-events: none;
+      }
+
+      .book-card-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-        gap: clamp(12px, 2.5vw, 22px);
-        margin-top: clamp(18px, 3vw, 32px);
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: clamp(18px, 4vw, 36px);
+        align-items: center;
+        position: relative;
+        z-index: 1;
       }
 
-      .stat-card {
-        background: rgba(255, 255, 255, 0.9);
-        border-radius: 18px;
-        padding: 16px 20px;
+      .book-cover-link {
+        justify-self: center;
+        background: #fff;
+        border-radius: 24px;
+        padding: 18px 20px;
+        border: 1px solid var(--border);
+        box-shadow: 0 22px 45px rgba(29, 26, 23, 0.2);
+        transform: rotate(-1.5deg);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .book-cover-link:hover {
+        transform: rotate(0deg) translateY(-4px);
+        box-shadow: 0 28px 55px rgba(29, 26, 23, 0.22);
+      }
+
+      .book-cover-img {
+        width: min(320px, 70vw);
+        height: auto;
+        display: block;
+      }
+
+      .book-details ul {
+        margin: 20px 0 0;
+        padding-left: 18px;
+        color: var(--muted);
+      }
+
+      .video-card {
+        background: #11100e;
+        border-radius: 28px;
+        padding: 18px;
+        color: #fff;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        box-shadow: 0 24px 50px rgba(17, 16, 14, 0.2);
+        display: grid;
+        gap: 16px;
+      }
+
+      .welcome-video {
+        width: 100%;
+        border-radius: 20px;
+        background: #000;
+      }
+
+      .video-card h3 {
+        margin: 0 0 6px;
+        font-size: 1.4rem;
+      }
+
+      .video-card p {
+        margin: 0;
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      .timeline {
+        display: grid;
+        gap: 18px;
+        margin-top: 26px;
+      }
+
+      .timeline-step {
+        padding: 20px 22px;
+        border-radius: 20px;
+        background: #fff;
         border: 1px solid var(--border);
         font-weight: 600;
-        color: var(--black);
       }
 
-      .stat-card span {
-        display: block;
-        font-size: 0.85rem;
-        color: var(--muted);
-        margin-top: 6px;
+      .testimonials {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 22px;
+        margin-top: 32px;
       }
 
-      .faq {
-        background: linear-gradient(140deg, #fff, #f4f6ff);
-        border-radius: 32px;
-        padding: clamp(32px, 5vw, 70px);
-        box-shadow: 0 30px 70px rgba(15, 23, 42, 0.08);
+      .testimonial-card {
+        background: #fff;
+        border-radius: 24px;
+        padding: 20px;
         border: 1px solid var(--border);
+        box-shadow: 0 20px 40px rgba(29, 26, 23, 0.08);
+      }
+
+      .testimonial-header {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 12px;
+      }
+
+      .testimonial-avatar {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: linear-gradient(140deg, var(--rust), #f0b38a);
+        color: #fff;
+        display: grid;
+        place-items: center;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+      }
+
+      .testimonial-card h3 {
+        margin: 0;
+        font-size: 1.05rem;
+      }
+
+      .testimonial-card p {
+        margin: 0 0 8px;
+      }
+
+      .testimonial-card span {
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      .credibility-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 16px;
+        margin-top: 28px;
+      }
+
+      .cred-card {
+        background: #fff;
+        border-radius: 20px;
+        padding: 14px;
+        border: 1px solid var(--border);
+        box-shadow: 0 20px 40px rgba(29, 26, 23, 0.08);
+      }
+
+      .cred-card img {
+        width: 100%;
+        height: 220px;
+        object-fit: contain;
+        border-radius: 14px;
+        background: #fff;
       }
 
       .faq-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: clamp(16px, 3vw, 28px);
-        margin-top: clamp(22px, 4vw, 36px);
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 18px;
+        margin-top: 24px;
       }
 
       .faq-card {
         background: #fff;
         border-radius: 20px;
         padding: 20px 22px;
-        border: 1px solid #e7e7f4;
+        border: 1px solid var(--border);
       }
 
       .faq-card h3 {
@@ -277,130 +495,21 @@
       .faq-card p {
         margin: 0;
         color: var(--muted);
-        font-size: 0.92rem;
-      }
-
-      .service-card {
-        background: #fff;
-        border-radius: 32px;
-        overflow: hidden;
-        box-shadow: 0 25px 60px rgba(15, 23, 42, 0.08);
-        display: flex;
-        flex-direction: column;
-        border: 1px solid var(--border);
-      }
-
-      .service-card img {
-        width: 100%;
-        height: 240px;
-        object-fit: cover;
-      }
-
-      .service-card .content {
-        padding: 26px;
-      }
-
-      .label {
-        display: inline-flex;
-        padding: 6px 16px;
-        border-radius: 999px;
-        background: rgba(108, 99, 255, 0.12);
-        color: var(--accent);
-        font-size: 0.82rem;
-        font-weight: 600;
-        letter-spacing: 0.05em;
-        text-transform: uppercase;
-      }
-
-      .service-card h3 {
-        margin: 16px 0 10px;
-        font-size: 1.4rem;
-      }
-
-      .service-card p {
-        margin: 0;
-        color: var(--muted);
         font-size: 0.95rem;
-      }
-
-      .section-header h2 {
-        margin: 0;
-        font-size: clamp(2rem, 4vw, 3rem);
-        font-family: "Playfair Display", serif;
-      }
-
-      .section-header p {
-        color: var(--muted);
-        max-width: 620px;
-        margin-top: 12px;
-        font-size: 1.05rem;
-      }
-
-      .journey {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: clamp(24px, 5vw, 48px);
-        align-items: center;
-      }
-
-      .timeline {
-        display: grid;
-        gap: clamp(14px, 2.5vw, 24px);
-      }
-
-      .timeline-step {
-        padding: 22px;
-        border-radius: 24px;
-        background: #fff;
-        border: 1px solid var(--border);
-        font-weight: 600;
-      }
-
-      .testimonials {
-        background: linear-gradient(145deg, #fff, #f0f3ff);
-        border-radius: 32px;
-        padding: clamp(30px, 4vw, 50px);
-        position: relative;
-        box-shadow: 0 20px 50px rgba(15, 23, 42, 0.12);
-      }
-
-      .testimonials::before {
-        content: "“";
-        font-size: 6rem;
-        color: rgba(108, 99, 255, 0.2);
-        position: absolute;
-        top: -20px;
-        left: 20px;
-      }
-
-      .testimonial {
-        margin-bottom: 24px;
-      }
-
-      .testimonial p {
-        margin: 0 0 10px;
-        color: var(--text);
-        font-size: 1.05rem;
-      }
-
-      .testimonial span {
-        display: block;
-        color: var(--muted);
-        font-size: 0.9rem;
       }
 
       .contact {
         background: #fff;
-        border-radius: 40px;
+        border-radius: 36px;
         padding: clamp(28px, 5vw, 60px);
-        box-shadow: 0 35px 70px rgba(15, 23, 42, 0.1);
+        box-shadow: 0 35px 70px rgba(29, 26, 23, 0.12);
       }
 
       .contact form {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-        gap: clamp(12px, 3vw, 20px);
-        margin-top: clamp(20px, 4vw, 32px);
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 16px;
+        margin-top: 24px;
       }
 
       .contact form button {
@@ -417,25 +526,57 @@
       input,
       textarea {
         width: 100%;
-        border-radius: 18px;
+        border-radius: 16px;
         border: 1px solid var(--border);
-        padding: 16px 18px;
+        padding: 14px 16px;
         font-family: inherit;
         font-size: 1rem;
-        background: #fdfdfd;
+        background: #fdfbf8;
       }
 
       textarea {
-        min-height: 140px;
+        min-height: 130px;
         grid-column: 1 / -1;
         resize: vertical;
       }
 
       footer {
         text-align: center;
-        padding: 30px 16px 50px;
+        padding: 30px 16px 70px;
         color: var(--muted);
         font-size: 0.9rem;
+      }
+
+      .mobile-cta {
+        display: none;
+      }
+
+      .reveal {
+        animation: rise 0.9s ease forwards;
+        opacity: 0;
+      }
+
+      .reveal.delay-1 {
+        animation-delay: 0.1s;
+      }
+
+      .reveal.delay-2 {
+        animation-delay: 0.2s;
+      }
+
+      .reveal.delay-3 {
+        animation-delay: 0.3s;
+      }
+
+      @keyframes rise {
+        from {
+          transform: translateY(18px);
+          opacity: 0;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
       }
 
       @media (min-width: 1200px) {
@@ -444,21 +585,19 @@
         }
       }
 
+      @media (min-width: 960px) {
+        .book-card-grid {
+          grid-template-columns: 1.4fr 1fr;
+        }
+      }
+
       @media (max-width: 900px) {
         header {
           min-height: auto;
         }
 
-        .hero {
-          max-width: 100%;
-        }
-
         .cta {
-          flex: 1 1 180px;
-        }
-
-        main section {
-          padding: clamp(28px, 8vw, 60px) clamp(16px, 6vw, 50px);
+          flex: 1 1 200px;
         }
       }
 
@@ -473,116 +612,64 @@
           gap: 12px;
         }
 
-        nav a {
-          padding-bottom: 6px;
-        }
-
         .hero {
           margin-top: 24px;
         }
 
-        .services {
-          margin-top: 0;
+        .testimonial-card {
+          padding: 18px;
         }
       }
 
       @media (max-width: 520px) {
         header {
-          padding: 24px 18px 56px;
+          padding: 24px 18px 70px;
           border-bottom-left-radius: 32px;
           border-bottom-right-radius: 32px;
-          background-size: cover;
-        }
-
-        nav {
-          gap: 12px;
         }
 
         nav ul {
           flex-direction: row;
           flex-wrap: wrap;
-          gap: 10px;
           justify-content: center;
         }
 
-        nav a {
-          width: auto;
-          padding: 4px 0;
-          border-bottom-color: transparent;
-        }
-
-        .hero {
-          margin-top: 12px;
-        }
-
         .hero h1 {
-          font-size: clamp(1.9rem, 9vw, 2.6rem);
-          line-height: 1.3;
+          font-size: clamp(2rem, 8.8vw, 2.8rem);
         }
 
         .hero p {
           font-size: 1rem;
         }
 
-        main section {
-          padding: clamp(28px, 12vw, 58px) clamp(12px, 5vw, 26px);
-        }
-
-        .stat-card,
-        .service-card .content,
-        .faq-card,
-        .timeline-step {
-          padding: 22px;
-        }
-
-        .service-card img {
-          height: 200px;
-        }
-
         .cta-group {
           flex-direction: column;
           align-items: flex-start;
-          gap: 12px;
         }
 
         .cta {
-          width: min(85vw, 320px);
-          max-width: 100%;
-          padding: 8px 20px;
-          min-height: auto;
-          border-radius: 28px;
-          align-self: flex-start;
-          flex: none;
+          width: auto;
+          padding: 10px 18px;
+          font-size: 0.9rem;
+          border-radius: 22px;
+          flex: 0 0 auto;
+          min-height: 44px;
         }
 
-        .mini-stats,
-        .card-grid,
-        .faq-grid,
-        .contact form {
-          grid-template-columns: 1fr;
+        .mobile-cta {
+          position: fixed;
+          bottom: 16px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: min(84vw, 300px);
+          z-index: 5;
+          box-shadow: 0 12px 30px rgba(29, 26, 23, 0.25);
+          display: inline-flex;
         }
 
         .contact form button {
           width: 100%;
           justify-self: stretch;
-        }
-
-        .timeline-step {
-          padding: 18px;
-        }
-
-        .faq {
-          padding: 20px 16px 26px;
-          border-radius: 24px;
-        }
-
-        #faq .section-header p {
-          max-width: none;
-        }
-
-        .faq-card {
-          border-radius: 16px;
-          padding: 16px 18px;
         }
       }
     </style>
@@ -590,215 +677,348 @@
   <body>
     <header>
       <nav>
-        <div class="brand">T.S</div>
+        <div class="brand">Mindset Coaching Academy</div>
         <ul>
-          <li><a href="#services">Services</a></li>
+          <li><a href="#services">Coaching</a></li>
+          <li><a href="#book">The Book</a></li>
           <li><a href="#journey">Journey</a></li>
           <li><a href="#voices">Testimonials</a></li>
-          <li><a href="#faq">FAQs</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="#contact">Start Here</a></li>
         </ul>
       </nav>
 
       <div class="hero">
-        <p class="eyebrow">Balance • Growth • Connection</p>
-        <h1>Therapy and coaching for individuals, couples, and families wherever you are.</h1>
+        <p class="eyebrow">Mindset - Momentum - Meaning</p>
+        <h1>Build a calm, confident mindset that carries you through every season.</h1>
         <p>
-          We translate the latest findings from behavioral medicine, family-systems therapy, and
-          coaching science into practical protocols. Each program references peer-reviewed studies
-          on attachment repair, neuroplasticity, and performance psychology to keep guidance rooted
-          in measurable outcomes rather than generic inspiration.
+          If you have been carrying stress in silence, you are not alone. This is a gentle, steady
+          space for real change. We help you calm the inner noise, feel safe to be honest, and take
+          caring steps that strengthen your relationships and your peace.
         </p>
         <div class="cta-group">
-          <button class="cta primary">Book a real conversation</button>
+          <a class="cta primary" href="#contact">Book a clarity call</a>
+          <a class="cta secondary" href="https://a.co/d/5RdnGaU" target="_blank" rel="noreferrer">
+            Get the book on Amazon
+          </a>
+        </div>
+        <div class="hero-trust">
+          <span>Safe, judgment-free guidance</span>
+          <span>Personalized action plans</span>
+          <span>Progress you can feel</span>
         </div>
       </div>
     </header>
 
     <main>
-      <section id="services" class="services">
+      <section id="services" class="soft-panel reveal">
         <div class="section-header">
-          <h2>Curated services shaped for real lives</h2>
+          <h2>Coaching for the moments that matter most.</h2>
           <p>
-            Our protocols integrate data from longitudinal trials in cognitive behavioral therapy,
-            Gottman Method couples research, and neurofeedback studies published in journals such as
-            <em>JAMA Psychiatry</em>. Sessions include structured assessments, validated scales, and
-            post-session metrics so every recommendation can be traced to replicable research.
+            Whether you are rebuilding your confidence, navigating relationships, or starting a new
+            chapter, we walk with you step by step. Every session blends compassion with clear,
+            practical tools so you feel supported, understood, and ready to move forward.
           </p>
-        </div>
-        <div class="mini-stats">
-          <div class="stat-card">
-            15+ yrs in practice
-            <span>Every lead therapist is licensed and actively supervised.</span>
-          </div>
-          <div class="stat-card">
-            87% see progress by week 5
-            <span>Tracked through weekly reflection surveys.</span>
-          </div>
-          <div class="stat-card">
-            Hybrid care
-            <span>Telehealth anywhere plus in-person sessions by request.</span>
-          </div>
         </div>
         <div class="card-grid">
           <article class="service-card">
-            <img src="imgs/IMG-20251108-WA0339.jpg" alt="Marriage counselling" />
+            <img src="imgs/IMG-20251108-WA0339.jpg" alt="Client in a coaching session" />
             <div class="content">
-              <span class="label">Marriage Counselling</span>
-              <h3>Restore dialogue, design new rituals.</h3>
+              <span class="label">Personal Mindset</span>
+              <h3>Quiet the noise and build inner stability.</h3>
               <p>
-                Sessions merge Gottman Method interventions with Emotionally Focused Therapy skills
-                shown in randomized trials to cut relapse. Partners cycle through physiological
-                soothing, repair attempts, and conflict mapping grounded in 40+ years of marital
-                stability research.
+                Learn how to manage stress, replace limiting beliefs, and reconnect with who you are
+                beyond the pressure.
               </p>
             </div>
           </article>
           <article class="service-card">
-            <img src="imgs/IMG-20251108-WA0340.jpg" alt="Life coaching" />
+            <img src="imgs/IMG-20251108-WA0340.jpg" alt="Woman reflecting in a notebook" />
             <div class="content">
-              <span class="label">Life Coaching</span>
-              <h3>Architect a life that mirrors your values.</h3>
+              <span class="label">Purpose and Goals</span>
+              <h3>Create focus, direction, and momentum.</h3>
               <p>
-                Protocols draw from Acceptance and Commitment Therapy literature on values
-                clarification plus implementation-intention research from Gollwitzer et al. Each plan
-                uses HRV-informed stress tracking and habit loops validated by behavioral economics.
+                We turn your vision into a clear plan, then walk it with you so your goals feel
+                achievable, not overwhelming.
               </p>
             </div>
           </article>
           <article class="service-card">
-            <img src="imgs/IMG-20251108-WA0341.jpg" alt="Goal achievement plan" />
+            <img src="imgs/IMG-20251108-WA0341.jpg" alt="Two people connecting over coffee" />
             <div class="content">
-              <span class="label">Goals Achieve</span>
-              <h3>Velocity for your bold milestones.</h3>
+              <span class="label">Relationships</span>
+              <h3>Communicate with clarity and care.</h3>
               <p>
-                This hybrid track fuses exposure-based CBT with motivational interviewing, a blend
-                linked to faster goal attainment in APA meta-analyses. Weekly reviews benchmark your
-                rituals and OKRs against normative datasets to verify measurable progress.
+                Strengthen the way you show up in love, family, and work by learning how to listen,
+                speak, and set boundaries with confidence.
               </p>
             </div>
           </article>
           <article class="service-card">
-            <img src="imgs/IMG-20251108-WA0338.jpg" alt="Therapy sessions" />
+            <img src="imgs/IMG-20251108-WA0338.jpg" alt="Mindset coaching session" />
             <div class="content">
-              <span class="label">Therapy Sessions</span>
-              <h3>Regulate, heal, and integrate.</h3>
+              <span class="label">Resilience</span>
+              <h3>Recover, reset, and rise again.</h3>
               <p>
-                Family intensives weave the SAFE model, parent management training, and polyvagal
-                regulation drills. We track outcomes with validated tools such as the Strengths and
-                Difficulties Questionnaire to document gains for every caregiver and child.
+                We help you move through setbacks with strength so you can trust yourself again and
+                keep moving forward.
               </p>
             </div>
           </article>
         </div>
       </section>
 
-      <section id="faq">
-        <div class="faq">
-          <div class="section-header">
-            <h2>FAQs about our specialties</h2>
-            <p>
-              If you’re skimming options and wondering how each track works, these quick answers
-              cover the logistics, timelines, and focus areas of our core services.
-            </p>
-          </div>
-          <div class="faq-grid">
-            <article class="faq-card">
-              <h3>What happens inside marriage counselling?</h3>
-              <p>
-                Weekly or bi-weekly sessions follow Emotionally Focused Therapy protocols that report
-                70–75% recovery in outcome studies. We integrate HRV biofeedback and relapse-prevent
-                checklists derived from Gottman Institute longitudinal research.
-              </p>
-            </article>
-            <article class="faq-card">
-              <h3>Is life coaching only for executives?</h3>
-              <p>
-                No. We adapt coaching frameworks validated with university and early-career samples,
-                incorporating goal-setting theory, self-determination research, and digital
-                accountability measures supported by randomized control trials in education settings.
-              </p>
-            </article>
-            <article class="faq-card">
-              <h3>How does the Goals Achieve track differ?</h3>
-              <p>
-                It combines graded exposure, motivational interviewing, and OKR planning inspired by
-                Deloitte’s performance science labs. The structure mirrors interventions cited by the
-                Association for Psychological Science for accelerating habit consolidation.
-              </p>
-            </article>
-            <article class="faq-card">
-              <h3>Do therapy sessions include families or teens?</h3>
-              <p>
-                Yes. We use attachment-based family therapy protocols with demonstrated efficacy for
-                adolescents plus parent management training rated as gold-standard by the American
-                Academy of Pediatrics. Caregivers receive data summaries after each block.
-              </p>
-            </article>
-            <article class="faq-card">
-              <h3>Can we combine in-person and telehealth?</h3>
-              <p>
-                Absolutely. Telehealth delivery follows APA telepsychology guidelines and mirrors
-                outcomes seen in 2021 NIH-funded trials where hybrid care maintained symptom
-                reductions comparable to in-person treatment.
-              </p>
-            </article>
-            <article class="faq-card">
-              <h3>How soon can we start?</h3>
-              <p>
-                Intakes open monthly. After the consent packet is submitted, we administer screening
-                instruments (PHQ-9, GAD-7, DAS) within 12 hours and match you with a clinician whose
-                training aligns with the presenting data.
-              </p>
-            </article>
+      <section id="book" class="reveal delay-1">
+        <div class="book-section">
+          <div class="book-card">
+            <div class="book-card-grid">
+              <div class="book-content">
+                <div class="section-header">
+                  <h2>Mindset Coaching Academy: the guide behind the method.</h2>
+                  <p>
+                    This book is a warm, practical roadmap for building confidence, emotional balance,
+                    and daily momentum. It was written for real life, real emotions, and the courage it
+                    takes to begin again.
+                  </p>
+                </div>
+                <div class="book-details">
+                  <ul>
+                    <li>Simple mindset tools you can apply immediately</li>
+                    <li>Exercises for clarity, calm, and resilience</li>
+                    <li>Stories and prompts to keep you motivated</li>
+                    <li>Gentle reminders to help you stay consistent</li>
+                  </ul>
+                  <div class="cta-group" style="margin-top: 18px;">
+                    <a
+                      class="cta primary"
+                      href="https://a.co/d/5RdnGaU"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      Buy the book on Amazon
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <a class="book-cover-link" href="https://a.co/d/5RdnGaU" target="_blank" rel="noreferrer">
+                <img class="book-cover-img" src="imgs/book.png" alt="Mindset Coaching Academy book cover" />
+              </a>
+            </div>
           </div>
         </div>
       </section>
 
-      <section id="journey">
-        <div class="journey">
+      <section class="soft-panel reveal delay-2">
+        <div class="section-header">
+          <h2>Watch the short welcome video.</h2>
+          <p>
+            A 90-second introduction to how we coach, what to expect, and why this work feels
+            different.
+          </p>
+        </div>
+        <div class="video-card" aria-label="Welcome video">
+          <video class="welcome-video" controls poster="imgs/IMG-20251108-WA0339.jpg">
+            <source src="videos/welcome.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
           <div>
-            <div class="section-header">
-              <h2>Every journey is personal, our method keeps it structured.</h2>
-              <p>
-                From the first conversation to post-program reflections, we track progress with
-                clarity while celebrating the human nuances that data can’t contain.
-              </p>
-            </div>
-              <div class="timeline">
-              <div class="timeline-step">01 — Intake batteries (PHQ-9, GAD-7, DAS-7) & autonomic mapping</div>
-              <div class="timeline-step">02 — Evidence-based plan integrating CBT, EFT, or ACT protocols</div>
-              <div class="timeline-step">03 — Weekly sessions with fidelity checks and between-session labs</div>
-              <div class="timeline-step">04 — Data review dashboards with relapse-prevention planning</div>
-            </div>
-          </div>
-          <div class="testimonials" id="voices">
-            <div class="testimonial">
-              <p>
-                “We walked in defensive and exhausted. Eight sessions later we have a vocabulary
-                for vulnerability and a calendar of rituals that keep us close.”
-              </p>
-              <span>Ava & James — Marriage Counselling Track</span>
-            </div>
-            <div class="testimonial">
-              <p>
-                “My coach blended compassion with strategy. I shipped a new venture while staying
-                grounded, something I never thought possible.”
-              </p>
-              <span>Devon I. — Life Coaching Client</span>
-            </div>
+            <h3>Meet your coach and the method.</h3>
+            <p>A warm hello and a simple look at what coaching with us feels like.</p>
           </div>
         </div>
       </section>
 
-      <section id="contact">
+      <section id="journey" class="reveal delay-1">
+        <div class="section-header">
+          <h2>Your growth path, guided and gentle.</h2>
+          <p>
+            We keep things simple and supportive. You will always know what we are working on and
+            why it matters.
+          </p>
+        </div>
+        <div class="timeline">
+          <div class="timeline-step">01 - Intentional intake so we understand your story</div>
+          <div class="timeline-step">02 - A clear mindset plan built around your goals</div>
+          <div class="timeline-step">03 - Weekly or bi-weekly sessions with real accountability</div>
+          <div class="timeline-step">04 - Progress check-ins and a plan to keep the change</div>
+        </div>
+      </section>
+
+      <section id="voices" class="soft-panel reveal delay-2">
+        <div class="section-header">
+          <h2>What clients are saying.</h2>
+          <p>
+            These are the moments that remind us why this work matters. Real people, real progress.
+          </p>
+        </div>
+        <div class="testimonials">
+          <article class="testimonial-card">
+            <div class="testimonial-header">
+              <div class="testimonial-avatar">EW</div>
+              <div>
+                <h3>Emma W.</h3>
+              </div>
+            </div>
+            <p>
+              "I felt heard from day one. The sessions were gentle but powerful, and I finally
+              trusted myself again."
+            </p>
+          </article>
+          <article class="testimonial-card">
+            <div class="testimonial-header">
+              <div class="testimonial-avatar">JM</div>
+              <div>
+                <h3>James M.</h3>
+              </div>
+            </div>
+            <p>
+              "My anxiety eased, my focus returned, and I stopped feeling stuck. I now have a plan
+              I can keep."
+            </p>
+          </article>
+          <article class="testimonial-card">
+            <div class="testimonial-header">
+              <div class="testimonial-avatar">OC</div>
+              <div>
+                <h3>Olivia C.</h3>
+              </div>
+            </div>
+            <p>
+              "The coaching gave me tools for real life, not just inspiration. I feel calmer and
+              more confident in my relationships."
+            </p>
+          </article>
+          <article class="testimonial-card">
+            <div class="testimonial-header">
+              <div class="testimonial-avatar">DR</div>
+              <div>
+                <h3>Daniel R.</h3>
+              </div>
+            </div>
+            <p>
+              "For the first time in years, I feel peace in my home and clarity in my choices."
+            </p>
+          </article>
+          <article class="testimonial-card">
+            <div class="testimonial-header">
+              <div class="testimonial-avatar">ST</div>
+              <div>
+                <h3>Sophia T.</h3>
+              </div>
+            </div>
+            <p>
+              "I stopped repeating the same arguments and started showing up with patience and
+              respect."
+            </p>
+          </article>
+          <article class="testimonial-card">
+            <div class="testimonial-header">
+              <div class="testimonial-avatar">MB</div>
+              <div>
+                <h3>Michael B.</h3>
+              </div>
+            </div>
+            <p>
+              "The coaching was warm, honest, and practical. I felt stronger after every call."
+            </p>
+          </article>
+          <article class="testimonial-card">
+            <div class="testimonial-header">
+              <div class="testimonial-avatar">LP</div>
+              <div>
+                <h3>Lauren P.</h3>
+              </div>
+            </div>
+            <p>
+              "I learned how to speak up without feeling guilty, and it changed the way I show up
+              in my relationships."
+            </p>
+          </article>
+          <article class="testimonial-card">
+            <div class="testimonial-header">
+              <div class="testimonial-avatar">EG</div>
+              <div>
+                <h3>Ethan G.</h3>
+              </div>
+            </div>
+            <p>
+              "The steps were simple and kind. I felt supported, not pressured, and I stayed
+              consistent for the first time."
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="reveal delay-3">
+        <div class="section-header">
+          <h2>Credentials and training.</h2>
+          <p>
+            We invest in continued training so every client receives professional, informed, and
+            ethical coaching.
+          </p>
+        </div>
+        <div class="credibility-grid">
+          <div class="cred-card">
+            <img
+              src="ttt/WhatsApp%20Image%202025-12-15%20at%202.02.25%20AM.jpeg"
+              alt="Certification document"
+            />
+          </div>
+          <div class="cred-card">
+            <img
+              src="ttt/WhatsApp%20Image%202025-12-15%20at%202.02.25%20AM%20(1).jpeg"
+              alt="Training certificate"
+            />
+          </div>
+        </div>
+      </section>
+
+      <section class="soft-panel reveal delay-2">
+        <div class="section-header">
+          <h2>Quick answers before you start.</h2>
+          <p>
+            Here are a few of the most common questions. If you need anything else, send us a
+            message.
+          </p>
+        </div>
+        <div class="faq-grid">
+          <article class="faq-card">
+            <h3>Is coaching right if I feel overwhelmed?</h3>
+            <p>
+              Yes. We start gently and focus on stability first. You will never be pushed faster than
+              feels safe.
+            </p>
+          </article>
+          <article class="faq-card">
+            <h3>How soon can I book a session?</h3>
+            <p>
+              We usually respond within 12 hours and schedule the first clarity call within a few
+              days.
+            </p>
+          </article>
+          <article class="faq-card">
+            <h3>Do you offer virtual sessions?</h3>
+            <p>
+              Yes. Sessions are available online so you can join from anywhere that feels private and
+              comfortable.
+            </p>
+          </article>
+          <article class="faq-card">
+            <h3>What if I only want the book?</h3>
+            <p>
+              The book stands on its own and is a beautiful starting point. Coaching is optional.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="contact" class="reveal delay-1">
         <div class="contact">
           <div class="section-header">
-            <h2>Begin with a free 20-minute clarity call.</h2>
+            <h2>Are you ready to improve your relationships?</h2>
             <p>
-              Tell us about your relationships, your goals, and where you feel stuck. Call or text
-              <strong>614-389-0747</strong> or email <strong>office@elevatedguidance.co</strong> and
-              we’ll map a pathway for intensive therapy, coaching, or a hybrid plan.
+              Tell us what you are carrying, what you want to change, and where you want support.
+              Call or text <strong>+1 (513) 999-4900</strong> or email
+              <strong>office@elevatedguidance.co</strong>.
             </p>
           </div>
           <form>
@@ -809,13 +1029,15 @@
             <button class="cta primary" type="submit">Reserve my session</button>
           </form>
           <p class="contact-note">
-            Leave your name, number, and best time to connect — our admin staff will call back
-            within 12 hours (Mon–Sat) with answers and scheduling options.
+            Prefer WhatsApp? Message us at
+            <a href="https://wa.me/15139994900" target="_blank" rel="noreferrer">+1 (513) 999-4900</a>.
           </p>
         </div>
       </section>
     </main>
 
-    <footer>© 2025 Elevated Guidance Collective · Focused on lasting healing and growth.</footer>
+    <footer>2025 Mindset Coaching Academy. Built for lasting growth and gentle change.</footer>
+
+    <a class="cta primary mobile-cta" href="#contact">Book my clarity call</a>
   </body>
 </html>
