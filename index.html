@@ -22,6 +22,9 @@
         --cream: #fffaf5;
         --gold: #b88a52;
         --border: rgba(29, 26, 23, 0.12);
+        --page-bg: radial-gradient(circle at top, #fdf8f2 0%, #f3ebe1 38%, #efe4d8 100%);
+        --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+        --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
       }
 
       *,
@@ -38,7 +41,7 @@
         margin: 0;
         font-family: "Plus Jakarta Sans", "Segoe UI", sans-serif;
         color: var(--ink);
-        background: radial-gradient(circle at top, #fdf8f2 0%, #f3ebe1 38%, #efe4d8 100%);
+        background: var(--page-bg);
         line-height: 1.7;
       }
 
@@ -212,19 +215,62 @@
       main {
         display: flex;
         flex-direction: column;
-        gap: clamp(46px, 7vw, 100px);
+        gap: clamp(56px, 7vw, 110px);
       }
 
       main section {
+        --section-bg: var(--cream);
+        --wave-height: clamp(22px, 3.2vw, 36px);
         padding: clamp(36px, 6vw, 90px) clamp(18px, 6vw, 90px);
+        position: relative;
+        background: var(--section-bg);
+        border-radius: 0 0 36px 36px;
+        border: 1px solid var(--border);
+        border-top: 0;
+        box-shadow: 0 18px 45px rgba(29, 26, 23, 0.06);
+        overflow: hidden;
+        isolation: isolate;
+      }
+
+      main section:first-of-type {
+        border-radius: 36px;
+      }
+
+      main section > * {
+        position: relative;
+        z-index: 1;
+      }
+
+      main section:not(:first-of-type)::before {
+        content: "";
+        position: absolute;
+        left: -1px;
+        right: -1px;
+        top: -1px;
+        height: calc(var(--wave-height) + 2px);
+        background: var(--page-bg);
+        background-attachment: fixed;
+        background-position: center top;
+        -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100' preserveAspectRatio='none'%3E%3Cpath d='M0,64 C120,32 240,32 360,64 C480,96 600,96 720,64 C840,32 960,32 1080,64 C1200,96 1320,96 1440,64 V0 H0 Z' fill='white'/%3E%3C/svg%3E");
+        -webkit-mask-repeat: no-repeat;
+        -webkit-mask-size: 100% 100%;
+        -webkit-mask-position: center top;
+        mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100' preserveAspectRatio='none'%3E%3Cpath d='M0,64 C120,32 240,32 360,64 C480,96 600,96 720,64 C840,32 960,32 1080,64 C1200,96 1320,96 1440,64 V0 H0 Z' fill='white'/%3E%3C/svg%3E");
+        mask-repeat: no-repeat;
+        mask-size: 100% 100%;
+        mask-position: center top;
+        z-index: 0;
+        pointer-events: none;
       }
 
       .soft-panel {
+        --section-bg: var(--cream);
         background: var(--cream);
-        border-radius: 36px;
+        border-radius: inherit;
         box-shadow: 0 25px 60px rgba(29, 26, 23, 0.08);
         border: 1px solid var(--border);
       }
+
 
       .section-header h2 {
         margin: 0;
@@ -287,6 +333,31 @@
         margin: 0;
         color: var(--muted);
         font-size: 0.95rem;
+      }
+
+      .service-card,
+      .testimonial-card,
+      .cred-card,
+      .ceo-card,
+      .faq-card,
+      .book-card,
+      .video-card,
+      .contact {
+        transition: transform 0.35s var(--ease-out), box-shadow 0.35s var(--ease-out);
+      }
+
+      @media (hover: hover) and (pointer: fine) {
+        .service-card:hover,
+        .testimonial-card:hover,
+        .cred-card:hover,
+        .ceo-card:hover,
+        .faq-card:hover,
+        .book-card:hover,
+        .video-card:hover,
+        .contact:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 30px 55px rgba(29, 26, 23, 0.12);
+        }
       }
 
       .book-section {
@@ -450,27 +521,131 @@
         font-size: 0.9rem;
       }
 
+      .ceo-section {
+        --section-bg: #fdf7f0;
+      }
+
+      .ceo-grid {
+        display: grid;
+        gap: clamp(22px, 3vw, 36px);
+        margin-top: 28px;
+        align-items: start;
+      }
+
+      .ceo-card {
+        position: relative;
+        background: linear-gradient(180deg, #ffffff, #fdf7f0);
+        border-radius: 28px;
+        padding: clamp(22px, 4vw, 34px);
+        border: 1px solid rgba(29, 26, 23, 0.1);
+        box-shadow: 0 28px 55px rgba(29, 26, 23, 0.12);
+        overflow: hidden;
+      }
+
+      .ceo-card::after {
+        content: "";
+        position: absolute;
+        inset: 16px;
+        border: 1px solid rgba(184, 138, 82, 0.18);
+        border-radius: 20px;
+        pointer-events: none;
+      }
+
+      .ceo-card .label {
+        background: rgba(193, 91, 58, 0.12);
+        color: var(--rust-dark);
+      }
+
+      .ceo-card h3 {
+        margin: 14px 0 6px;
+        font-size: 1.55rem;
+      }
+
+      .ceo-card .role {
+        margin: 0 0 14px;
+        color: var(--muted);
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        font-size: 0.95rem;
+      }
+
+      .ceo-card > p {
+        margin: 0 0 6px;
+        color: var(--muted);
+      }
+
+      .ceo-credentials-panel {
+        display: grid;
+        gap: 18px;
+      }
+
+      .ceo-credentials-panel h3 {
+        margin: 0 0 6px;
+        font-size: 1.35rem;
+      }
+
+      .ceo-credentials-panel p {
+        margin: 0 0 16px;
+        color: var(--muted);
+      }
+
+      .author-card {
+        margin-top: 18px;
+        padding: 18px 20px;
+        border-radius: 20px;
+        background: linear-gradient(140deg, rgba(253, 243, 232, 0.9), rgba(248, 234, 216, 0.95));
+        border: 1px solid rgba(184, 138, 82, 0.35);
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.7);
+      }
+
+      .author-card .label {
+        background: rgba(184, 138, 82, 0.16);
+        color: var(--rust-dark);
+      }
+
+      .author-card p {
+        margin: 8px 0 12px;
+        font-weight: 600;
+      }
+
+      .author-card .cta {
+        padding: 10px 18px;
+        font-size: 0.9rem;
+      }
+
+      .language-note {
+        margin-top: 16px;
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
       .credibility-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-        gap: 16px;
-        margin-top: 28px;
+        gap: 14px;
+        margin-top: 18px;
       }
 
       .cred-card {
         background: #fff;
-        border-radius: 20px;
-        padding: 14px;
+        border-radius: 18px;
+        padding: 16px 18px;
         border: 1px solid var(--border);
-        box-shadow: 0 20px 40px rgba(29, 26, 23, 0.08);
+        box-shadow: 0 18px 40px rgba(29, 26, 23, 0.08);
+        display: grid;
+        align-content: center;
+        min-height: 90px;
       }
 
-      .cred-card img {
-        width: 100%;
-        height: 220px;
-        object-fit: contain;
-        border-radius: 14px;
-        background: #fff;
+      .cred-card p {
+        margin: 0;
+        font-weight: 600;
+        font-size: 0.95rem;
+      }
+
+      .cred-card span {
+        color: var(--muted);
+        font-size: 0.9rem;
       }
 
       .faq-grid {
@@ -524,7 +699,8 @@
       }
 
       input,
-      textarea {
+      textarea,
+      select {
         width: 100%;
         border-radius: 16px;
         border: 1px solid var(--border);
@@ -534,17 +710,300 @@
         background: #fdfbf8;
       }
 
+      input:focus-visible,
+      textarea:focus-visible,
+      select:focus-visible {
+        outline: 2px solid rgba(193, 91, 58, 0.35);
+        outline-offset: 2px;
+      }
+
       textarea {
         min-height: 130px;
         grid-column: 1 / -1;
         resize: vertical;
       }
 
-      footer {
-        text-align: center;
-        padding: 30px 16px 70px;
+      .form-status {
+        grid-column: 1 / -1;
+        margin: 4px 0 0;
+        font-size: 0.95rem;
         color: var(--muted);
-        font-size: 0.9rem;
+      }
+
+      .form-status.is-error {
+        color: #b1422a;
+      }
+
+      .hp-field {
+        position: absolute;
+        left: -9999px;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+      }
+
+      body.modal-open {
+        overflow: hidden;
+      }
+
+      .status-modal {
+        position: fixed;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 18px;
+        background: rgba(29, 26, 23, 0.45);
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.25s var(--ease-out);
+        z-index: 2000;
+        --status-accent: var(--sage);
+        --status-soft: rgba(38, 66, 67, 0.22);
+      }
+
+      .status-modal.is-error {
+        --status-accent: #b1422a;
+        --status-soft: rgba(177, 66, 42, 0.22);
+      }
+
+      .status-modal.is-visible {
+        opacity: 1;
+        pointer-events: auto;
+      }
+
+      .status-dialog {
+        width: min(92vw, 420px);
+        background: #fff;
+        border-radius: 28px;
+        padding: 28px 24px 22px;
+        text-align: center;
+        border: 1px solid var(--border);
+        box-shadow: 0 35px 80px rgba(29, 26, 23, 0.18);
+        transform: translateY(10px) scale(0.96);
+        opacity: 0;
+      }
+
+      .status-modal.is-visible .status-dialog {
+        animation: modal-pop 0.35s var(--ease-out) forwards;
+      }
+
+      .status-icon {
+        width: 90px;
+        height: 90px;
+        margin: 0 auto 16px;
+        position: relative;
+      }
+
+      .status-svg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        fill: none;
+        stroke: var(--status-accent);
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 4;
+        opacity: 0;
+      }
+
+      .status-spin {
+        stroke: var(--status-soft);
+        opacity: 0;
+      }
+
+      .status-spin .status-spin-circle {
+        stroke-dasharray: 6 10;
+      }
+
+      .status-modal.is-visible .status-spin {
+        animation: spin-dash 0.8s linear forwards;
+      }
+
+      .status-modal.is-success.is-visible .status-success,
+      .status-modal.is-error.is-visible .status-error {
+        opacity: 1;
+      }
+
+      .status-circle {
+        stroke-dasharray: 152;
+        stroke-dashoffset: 152;
+        transform: rotate(-90deg);
+        transform-origin: 50% 50%;
+      }
+
+      .status-check {
+        stroke-dasharray: 60;
+        stroke-dashoffset: 60;
+        opacity: 0;
+      }
+
+      .status-cross {
+        stroke-dasharray: 60;
+        stroke-dashoffset: 60;
+        opacity: 0;
+      }
+
+      .status-modal.is-success.is-visible .status-success .status-circle,
+      .status-modal.is-error.is-visible .status-error .status-circle {
+        animation: draw-circle 0.55s var(--ease-out) 0.05s forwards;
+      }
+
+      .status-modal.is-success.is-visible .status-check {
+        animation: draw-check 0.45s var(--ease-out) 0.35s forwards;
+      }
+
+      .status-modal.is-error.is-visible .status-cross.line-1 {
+        animation: draw-cross 0.38s var(--ease-out) 0.3s forwards;
+      }
+
+      .status-modal.is-error.is-visible .status-cross.line-2 {
+        animation: draw-cross 0.38s var(--ease-out) 0.4s forwards;
+      }
+
+      .status-title {
+        margin: 0 0 6px;
+        font-size: 1.35rem;
+        font-family: "DM Serif Display", serif;
+        color: var(--ink);
+      }
+
+      .status-message {
+        margin: 0 0 18px;
+        color: var(--muted);
+        font-size: 0.98rem;
+      }
+
+      .status-close {
+        min-width: 160px;
+      }
+
+      @keyframes modal-pop {
+        0% {
+          transform: translateY(14px) scale(0.95);
+          opacity: 0;
+        }
+        100% {
+          transform: translateY(0) scale(1);
+          opacity: 1;
+        }
+      }
+
+      @keyframes spin-dash {
+        0% {
+          opacity: 0;
+          transform: rotate(0deg);
+        }
+        20% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+          transform: rotate(300deg);
+        }
+      }
+
+      @keyframes draw-circle {
+        0% {
+          opacity: 0;
+          stroke-dashoffset: 152;
+        }
+        100% {
+          opacity: 1;
+          stroke-dashoffset: 0;
+        }
+      }
+
+      @keyframes draw-check {
+        0% {
+          opacity: 0;
+          stroke-dashoffset: 60;
+        }
+        100% {
+          opacity: 1;
+          stroke-dashoffset: 0;
+        }
+      }
+
+      @keyframes draw-cross {
+        0% {
+          opacity: 0;
+          stroke-dashoffset: 60;
+        }
+        100% {
+          opacity: 1;
+          stroke-dashoffset: 0;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .status-modal.is-visible .status-dialog,
+        .status-modal.is-visible .status-spin,
+        .status-modal.is-visible .status-circle,
+        .status-modal.is-visible .status-check,
+        .status-modal.is-visible .status-cross {
+          animation: none !important;
+          opacity: 1;
+          stroke-dashoffset: 0;
+          transform: none;
+        }
+      }
+
+      .site-footer {
+        padding: 36px 18px 70px;
+        color: var(--muted);
+        font-size: 0.95rem;
+        background: linear-gradient(180deg, rgba(255, 250, 245, 0.92), rgba(245, 239, 230, 0.98));
+        border-top: 1px solid var(--border);
+      }
+
+      .footer-inner {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: grid;
+        gap: 18px;
+        align-items: center;
+      }
+
+      .footer-title {
+        font-family: "DM Serif Display", serif;
+        font-size: 1.5rem;
+        color: var(--ink);
+        letter-spacing: 0.02em;
+      }
+
+      .footer-meta {
+        margin: 8px 0 0;
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      .footer-contact {
+        display: grid;
+        gap: 8px;
+        justify-items: start;
+      }
+
+      .footer-label {
+        text-transform: uppercase;
+        letter-spacing: 0.25em;
+        font-size: 0.7rem;
+        color: var(--muted);
+      }
+
+      .footer-contact a {
+        color: var(--rust-dark);
+        font-weight: 600;
+      }
+
+      .footer-contact a:hover {
+        color: var(--rust);
+      }
+
+      .footer-location {
+        color: var(--muted);
+        font-size: 0.92rem;
       }
 
       .mobile-cta {
@@ -552,31 +1011,33 @@
       }
 
       .reveal {
-        animation: rise 0.9s ease forwards;
+        opacity: 1;
+        transform: none;
+      }
+
+      .js .reveal {
         opacity: 0;
+        transform: translateY(18px);
+        transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out);
+        transition-delay: var(--delay, 0s);
+        will-change: transform, opacity;
+      }
+
+      .js .reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
       }
 
       .reveal.delay-1 {
-        animation-delay: 0.1s;
+        --delay: 0.1s;
       }
 
       .reveal.delay-2 {
-        animation-delay: 0.2s;
+        --delay: 0.2s;
       }
 
       .reveal.delay-3 {
-        animation-delay: 0.3s;
-      }
-
-      @keyframes rise {
-        from {
-          transform: translateY(18px);
-          opacity: 0;
-        }
-        to {
-          transform: translateY(0);
-          opacity: 1;
-        }
+        --delay: 0.3s;
       }
 
       @media (min-width: 1200px) {
@@ -588,6 +1049,11 @@
       @media (min-width: 960px) {
         .book-card-grid {
           grid-template-columns: 1.4fr 1fr;
+        }
+
+        .ceo-grid {
+          grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+          align-items: start;
         }
       }
 
@@ -616,12 +1082,40 @@
           margin-top: 24px;
         }
 
+        .hero-trust {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
         .testimonial-card {
           padding: 18px;
         }
+
+        .footer-inner {
+          text-align: center;
+          justify-items: center;
+        }
+
+        .footer-contact {
+          justify-items: center;
+        }
+      }
+
+      .ceo-grid .credibility-grid {
+        margin-top: 12px;
       }
 
       @media (max-width: 520px) {
+        main section {
+          --wave-height: 22px;
+          padding: 32px 18px;
+          border-radius: 0 0 28px 28px;
+        }
+
+        main section:first-of-type {
+          border-radius: 28px;
+        }
+
         header {
           padding: 24px 18px 70px;
           border-bottom-left-radius: 32px;
@@ -656,6 +1150,18 @@
           min-height: 44px;
         }
 
+        .service-card img {
+          height: 190px;
+        }
+
+        .credibility-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .ceo-card {
+          padding: 20px;
+        }
+
         .mobile-cta {
           position: fixed;
           bottom: 16px;
@@ -670,6 +1176,32 @@
         .contact form button {
           width: 100%;
           justify-self: stretch;
+        }
+      }
+
+      @media (min-width: 900px) {
+        .footer-inner {
+          grid-template-columns: 1.4fr 0.8fr;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .js .reveal {
+          opacity: 1;
+          transform: none;
+          transition: none;
+        }
+
+        .service-card,
+        .testimonial-card,
+        .cred-card,
+        .ceo-card,
+        .faq-card,
+        .book-card,
+        .video-card,
+        .contact,
+        .cta {
+          transition: none;
         }
       }
     </style>
@@ -716,10 +1248,11 @@
           <p>
             Whether you are rebuilding your confidence, navigating relationships, or starting a new
             chapter, we walk with you step by step. Every session blends compassion with clear,
-            practical tools so you feel supported, understood, and ready to move forward.
+            practical tools so you feel supported, understood, and ready to move forward. Sessions
+            and courses are available in Arabic and English.
           </p>
         </div>
-        <div class="card-grid">
+        <div class="card-grid" data-stagger="0.08">
           <article class="service-card">
             <img src="imgs/IMG-20251108-WA0339.jpg" alt="Client in a coaching session" />
             <div class="content">
@@ -835,7 +1368,7 @@
             why it matters.
           </p>
         </div>
-        <div class="timeline">
+        <div class="timeline" data-stagger="0.08">
           <div class="timeline-step">01 - Intentional intake so we understand your story</div>
           <div class="timeline-step">02 - A clear mindset plan built around your goals</div>
           <div class="timeline-step">03 - Weekly or bi-weekly sessions with real accountability</div>
@@ -850,7 +1383,7 @@
             These are the moments that remind us why this work matters. Real people, real progress.
           </p>
         </div>
-        <div class="testimonials">
+        <div class="testimonials" data-stagger="0.06">
           <article class="testimonial-card">
             <div class="testimonial-header">
               <div class="testimonial-avatar">EW</div>
@@ -948,26 +1481,52 @@
         </div>
       </section>
 
-      <section class="reveal delay-3">
+      <section class="ceo-section reveal delay-3">
         <div class="section-header">
-          <h2>Credentials and training.</h2>
+          <h2>Our CEO</h2>
           <p>
-            We invest in continued training so every client receives professional, informed, and
-            ethical coaching.
+            Coach Tareq Sweidan leads Mindset Coaching Academy with professional training and a
+            client-first approach that stays ethical, warm, and practical.
           </p>
         </div>
-        <div class="credibility-grid">
-          <div class="cred-card">
-            <img
-              src="ttt/WhatsApp%20Image%202025-12-15%20at%202.02.25%20AM.jpeg"
-              alt="Certification document"
-            />
-          </div>
-          <div class="cred-card">
-            <img
-              src="ttt/WhatsApp%20Image%202025-12-15%20at%202.02.25%20AM%20(1).jpeg"
-              alt="Training certificate"
-            />
+        <div class="ceo-grid">
+          <article class="ceo-card">
+            <span class="label">Our CEO</span>
+            <h3>Coach Tareq Sweidan</h3>
+            <p class="role">CEO &amp; Founder</p>
+            <p>
+              Certified across leadership, life coaching, NLP, and organizational development to
+              help clients build clarity, resilience, and lasting change.
+            </p>
+            <div class="author-card">
+              <span class="label">Author of</span>
+              <p>Mastering Your Subconscious</p>
+              <a class="cta secondary" href="#" target="_blank" rel="noreferrer">Book link</a>
+            </div>
+            <p class="language-note">Courses and sessions are available in Arabic and English.</p>
+          </article>
+          <div class="ceo-credentials-panel">
+            <div>
+              <h3>Credentials &amp; Training</h3>
+              <p>Professional certifications that support leadership, mindset, and growth work.</p>
+            </div>
+            <div class="credibility-grid" data-stagger="0.05">
+              <div class="cred-card">
+                <p>Certified Associate Leadership &amp; Executive Coach (NLP)</p>
+              </div>
+              <div class="cred-card">
+                <p>Certified Hypnosis Practitioner</p>
+              </div>
+              <div class="cred-card">
+                <p>Certified NLP Practitioner (Neuro-Linguistic Programming)</p>
+              </div>
+              <div class="cred-card">
+                <p>Certified Life Coach</p>
+              </div>
+              <div class="cred-card">
+                <p>Certified Organizational Development Coach</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -980,7 +1539,7 @@
             message.
           </p>
         </div>
-        <div class="faq-grid">
+        <div class="faq-grid" data-stagger="0.06">
           <article class="faq-card">
             <h3>Is coaching right if I feel overwhelmed?</h3>
             <p>
@@ -1021,12 +1580,33 @@
               <strong>office@elevatedguidance.co</strong>.
             </p>
           </div>
-          <form>
-            <input type="text" placeholder="Full name" />
-            <input type="email" placeholder="Email address" />
-            <input type="tel" placeholder="WhatsApp or phone" />
-            <textarea placeholder="How can we support you?"></textarea>
+          <form id="booking-form" data-endpoint="https://floral-boat-6c4e.laithqarqaz1.workers.dev/">
+            <input type="text" name="name" placeholder="Full name" autocomplete="name" required />
+            <input
+              type="email"
+              name="email"
+              placeholder="Email address (optional)"
+              autocomplete="email"
+            />
+            <input
+              type="tel"
+              name="phone"
+              placeholder="WhatsApp or phone"
+              autocomplete="tel"
+              required
+            />
+            <select name="language" aria-label="Preferred language">
+              <option value="Arabic">Preferred language: Arabic</option>
+              <option value="English">Preferred language: English</option>
+              <option value="Arabic & English">Preferred language: Arabic &amp; English</option>
+            </select>
+            <textarea name="message" placeholder="How can we support you?" required></textarea>
+            <div class="hp-field" aria-hidden="true">
+              <label>Company</label>
+              <input type="text" name="company" tabindex="-1" autocomplete="off" />
+            </div>
             <button class="cta primary" type="submit">Reserve my session</button>
+            <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
           </form>
           <p class="contact-note">
             Prefer WhatsApp? Message us at
@@ -1036,8 +1616,225 @@
       </section>
     </main>
 
-    <footer>2025 Mindset Coaching Academy. Built for lasting growth and gentle change.</footer>
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div>
+          <div class="footer-title">Mindset Coaching Academy</div>
+          <p class="footer-meta">2025 Mindset Coaching Academy. Built for lasting growth and gentle change.</p>
+        </div>
+        <div class="footer-contact">
+          <span class="footer-label">Contact</span>
+          <a href="mailto:Coach@mindsetacademy.com">Coach@mindsetacademy.com</a>
+          <span class="footer-location">Hamilton, Ohio USA</span>
+        </div>
+      </div>
+    </footer>
+
+    <div class="status-modal" id="status-modal" aria-hidden="true">
+      <div
+        class="status-dialog"
+        role="alertdialog"
+        aria-modal="true"
+        aria-labelledby="status-title"
+        aria-describedby="status-message"
+      >
+        <div class="status-icon" aria-hidden="true">
+          <svg class="status-svg status-spin" viewBox="0 0 72 72" aria-hidden="true">
+            <circle class="status-spin-circle" cx="36" cy="36" r="24"></circle>
+          </svg>
+          <svg class="status-svg status-success" viewBox="0 0 72 72" aria-hidden="true">
+            <circle class="status-circle" cx="36" cy="36" r="24"></circle>
+            <path class="status-check" d="M24 38 L32 46 L50 28"></path>
+          </svg>
+          <svg class="status-svg status-error" viewBox="0 0 72 72" aria-hidden="true">
+            <circle class="status-circle" cx="36" cy="36" r="24"></circle>
+            <line class="status-cross line-1" x1="26" y1="26" x2="46" y2="46"></line>
+            <line class="status-cross line-2" x1="46" y1="26" x2="26" y2="46"></line>
+          </svg>
+        </div>
+        <h3 class="status-title" id="status-title">Request sent</h3>
+        <p class="status-message" id="status-message">Thanks! Your request has been sent.</p>
+        <button class="cta secondary status-close" type="button">Close</button>
+      </div>
+    </div>
 
     <a class="cta primary mobile-cta" href="#contact">Book my clarity call</a>
+
+    <script>
+      document.documentElement.classList.add("js");
+
+      (() => {
+        const staggerContainers = document.querySelectorAll("[data-stagger]");
+        staggerContainers.forEach((container) => {
+          const step = Number(container.dataset.stagger) || 0.08;
+          Array.from(container.children).forEach((child, index) => {
+            child.classList.add("reveal");
+            child.style.setProperty("--delay", `${index * step}s`);
+          });
+        });
+
+        const revealEls = document.querySelectorAll(".reveal");
+        if (!revealEls.length) return;
+
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          revealEls.forEach((el) => el.classList.add("is-visible"));
+          return;
+        }
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              entry.target.classList.toggle("is-visible", entry.isIntersecting);
+            });
+          },
+          { threshold: 0.18, rootMargin: "0px 0px -10% 0px" }
+        );
+
+        revealEls.forEach((el) => observer.observe(el));
+      })();
+
+      (() => {
+        const form = document.getElementById("booking-form");
+        if (!form) return;
+
+        const statusEl = document.getElementById("form-status");
+        const submitBtn = form.querySelector("button[type=\"submit\"]");
+        const defaultText = submitBtn ? submitBtn.textContent : "Submit";
+        const statusModal = document.getElementById("status-modal");
+        const statusTitle = document.getElementById("status-title");
+        const statusMessage = document.getElementById("status-message");
+        const statusCloseBtn = statusModal ? statusModal.querySelector(".status-close") : null;
+
+        const warmSession = async (endpoint) => {
+          const sessionUrl = new URL("/session", endpoint).toString();
+          const res = await fetch(sessionUrl, {
+            method: "GET",
+            headers: { Accept: "application/json" },
+            cache: "no-store",
+            credentials: "include"
+          });
+          const data = await res.json().catch(() => null);
+          if (!res.ok || !data || data.ok === false) {
+            throw new Error(data?.error || "Session request failed");
+          }
+        };
+
+        const setStatus = (message, isError) => {
+          if (!statusEl) return;
+          statusEl.textContent = message;
+          statusEl.classList.toggle("is-error", Boolean(isError));
+        };
+
+        const openStatusModal = (state, message) => {
+          if (!statusModal || !statusTitle || !statusMessage) return;
+          statusModal.classList.remove("is-visible", "is-success", "is-error");
+          void statusModal.offsetWidth;
+          statusModal.classList.add(
+            "is-visible",
+            state === "success" ? "is-success" : "is-error"
+          );
+          statusModal.setAttribute("aria-hidden", "false");
+          statusTitle.textContent = state === "success" ? "Request sent" : "Request failed";
+          statusMessage.textContent = message;
+          document.body.classList.add("modal-open");
+          if (statusCloseBtn) statusCloseBtn.focus();
+        };
+
+        const closeStatusModal = () => {
+          if (!statusModal) return;
+          statusModal.classList.remove("is-visible", "is-success", "is-error");
+          statusModal.setAttribute("aria-hidden", "true");
+          document.body.classList.remove("modal-open");
+        };
+
+        if (statusCloseBtn) {
+          statusCloseBtn.addEventListener("click", closeStatusModal);
+        }
+
+        if (statusModal) {
+          statusModal.addEventListener("click", (event) => {
+            if (event.target === statusModal) closeStatusModal();
+          });
+        }
+
+        document.addEventListener("keydown", (event) => {
+          if (event.key === "Escape" && statusModal?.classList.contains("is-visible")) {
+            closeStatusModal();
+          }
+        });
+
+        const getValue = (selector) => {
+          const field = form.querySelector(selector);
+          return field ? field.value.trim() : "";
+        };
+
+        form.addEventListener("submit", async (event) => {
+          event.preventDefault();
+
+          const endpoint = (form.dataset.endpoint || "").trim();
+          if (!endpoint || endpoint.includes("your-worker")) {
+            setStatus("Booking endpoint is not configured yet.", true);
+            return;
+          }
+
+          const payload = {
+            name: getValue("[name=\"name\"]"),
+            email: getValue("[name=\"email\"]"),
+            phone: getValue("[name=\"phone\"]"),
+            language: getValue("[name=\"language\"]"),
+            message: getValue("[name=\"message\"]"),
+            source: window.location.href
+          };
+
+          if (getValue("[name=\"company\"]")) {
+            setStatus("Thanks! We will get back to you soon.");
+            form.reset();
+            return;
+          }
+
+          if (!payload.name || !payload.phone || !payload.message) {
+            setStatus("Please add your name, phone, and message.", true);
+            return;
+          }
+
+          if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.textContent = "Sending...";
+          }
+
+          try {
+            await warmSession(endpoint);
+            const res = await fetch(endpoint, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json"
+              },
+              body: JSON.stringify(payload),
+              credentials: "include"
+            });
+            const data = await res.json().catch(() => null);
+            if (!res.ok || (data && data.ok === false)) {
+              throw new Error(data?.error || "Request failed");
+            }
+            const successMessage = "Thanks! Your request has been sent.";
+            setStatus(successMessage);
+            openStatusModal("success", successMessage);
+            form.reset();
+          } catch (err) {
+            const message = String(err?.message || "");
+            const errorMessage = message.toLowerCase().includes("session")
+              ? "We could not start a secure session. Please refresh and try again."
+              : "Sorry, we could not send your request. Please WhatsApp or call us.";
+            setStatus(errorMessage, true);
+            openStatusModal("error", errorMessage);
+          } finally {
+            if (submitBtn) {
+              submitBtn.disabled = false;
+              submitBtn.textContent = defaultText;
+            }
+          }
+        });
+      })();
+    </script>
   </body>
 </html>
